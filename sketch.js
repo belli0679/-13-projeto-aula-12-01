@@ -18,7 +18,7 @@ function setup() {
 	world = engine.world;
 
 	rectMode(CENTER);
-	rectMode(RADIUS);
+	ellipseMode(RADIUS);
 
 	var ball_options ={
 		restitution:0.5,
@@ -44,26 +44,23 @@ function draw() {
  
   background("#141D2D");
   Engine.update(engine);
+  world = engine.world;
   
   fill("#FFFAF0");
-  ellipse(ball.position.x, ball.position.y, 50);
+  ellipse(ball.position.x, ball.position.y, 30, 30);
 
   ground.display();
 
   leftWall.display();
   rightWall.display();
-
-  upArrow();
-
-  drawSprites();
  
-  console.log(mouseY);
+  //console.log(mouseY);
 
 }
 
-function upArrow(){
+function keyPressed(){
    if (keyCode === UP_ARROW){
-	Matter.Body.applyForce(ball, {x:0, y:0}, {x: 10, y:5});
+	Matter.Body.applyForce(ball, ball.position, {x: 240, y:-240});
 
    }	
 
